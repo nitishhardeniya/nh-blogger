@@ -5,9 +5,10 @@ import { Provider } from 'react-redux';
 
 import PostStore from './stores/poststore';
 import './App.css';
-import Home from './components/home';
+// import Home from './components/home';
 import Posts from './components/posts';
 import PostDetails from './components/postdetails';
+import UserDetails from './components/userdetails';
 
 const store = PostStore();
 
@@ -18,6 +19,7 @@ const Section = () => (
 				<Route path="/" component={Posts} exact />
 				<Route path="/posts/:userid" component={Posts} />
 				<Route path="/postdetails/:postid" component={PostDetails} />
+				<Route path="/userdetails/:userid" component={UserDetails} />
 			</Switch>
 		</BrowserRouter>
 	);

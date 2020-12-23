@@ -9,7 +9,6 @@ class Postdetails extends Component {
 	constructor(){
 		super();
 		this.state = {
-			postDetails : [],
 			showComments : false,
 			allComments:[]
 		}
@@ -17,12 +16,6 @@ class Postdetails extends Component {
 
 	componentDidMount(){
 		this.props.getPostInfo(this.props.match.params.postid);
-	}
-
-	componentWillReceiveProps(nextProps){
-		this.setState({
-			postDetails:nextProps.postDetails
-		})
 	}
 
 	loadComments(postId) {
@@ -58,19 +51,18 @@ class Postdetails extends Component {
 	}
 
 	render() {
-		let {postDetails} = this.state;
+		let { postDetails } = this.props;
 		return (
 			<React.Fragment>
-				<div className="post-content">
-
-					{postDetails && postDetails.id && <div className="item-button" style={{position:'absolute',top:'10px',right:'10px'}} onClick={this.deletePost.bind(this,postDetails.id,postDetails.userId)}>Delete post</div>}
-					<div className="title">{postDetails.title}</div>
+				{postDetails && <div className="post-content full-view">
+					{postDetails.id && <div className="item-button" style={{position:'absolute',top:'10px',right:'10px'}} onClick={this.deletePost.bind(this,postDetails.id,postDetails.userId)}>Delete post</div>}
+					<div className="title-24">{postDetails.title}</div>
 					<div className="info">{postDetails.body}</div>
 
 					<div className="item-link" onClick={this.loadComments.bind(this,postDetails.id)} >{this.state.showComments ? 'hide comments' : 'show comments'}</div>
 
 					{this.state.showComments && <Comments commentsData={this.state.allComments}/>}
-				</div>	
+				</div>}	
 			</React.Fragment>
 		);
 	}
@@ -79,7 +71,7 @@ class Postdetails extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		postDetails : state.posts.postDetails
+		postDetails : state.results.postDetails
 	}
 }
 

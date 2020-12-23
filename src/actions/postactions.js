@@ -1,4 +1,4 @@
-import { BASE_URL,POSTS,USER } from './../constants/config';
+import { BASE_URL,POSTS,USER, USER_LISTING } from './../constants/config';
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST_DETAILS = 'RECEIVE_POST_DETAILS';
@@ -31,7 +31,6 @@ export function fetchPosts(userId) {
 				.catch(err=>console.log(err.message))
  	};
 }
-
 
 export function fetchPostDetails(postId) {
 	return function (dispatch) {
