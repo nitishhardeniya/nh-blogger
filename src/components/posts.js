@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {fetchPosts} from './../actions/postactions';
+import Loader from './hoc/loader';
 
 class Posts extends Component {
 	componentDidMount(){
@@ -53,4 +54,4 @@ const mapDispatchToProps = {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Posts);
+)(Loader('posts')(Posts));
